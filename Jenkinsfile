@@ -45,8 +45,8 @@ def pipeline = new io.estrado.Pipeline()
 podTemplate(label: 'jenkins-pipeline', containers: [
     containerTemplate(name: 'jnlp', image: 'jenkinsci/jnlp-slave:latest', args: '${computer.jnlpmac} ${computer.name}', workingDir: '/home/jenkins', resourceRequestCpu: '200m', resourceLimitCpu: '200m', resourceRequestMemory: '256Mi', resourceLimitMemory: '256Mi'),
     containerTemplate(name: 'docker', image: 'docker:latest',       command: 'cat', ttyEnabled: true),
-    containerTemplate(name: 'node', image: 'jonbaldie/yarn:latest', command: 'cat', ttyEnabled: true),
-    containerTemplate(name: 'helm', image: 'lachlanevenson/k8s-helm:latest', command: 'cat', ttyEnabled: true),
+    containerTemplate(name: 'node', image: 'jonbaldie/yarn:latest', command: 'cat', ttyEnabled: true)
+    //containerTemplate(name: 'helm', image: 'lachlanevenson/k8s-helm:latest', command: 'cat', ttyEnabled: true),
     //containerTemplate(name: 'kubectl', image: 'lachlanevenson/k8s-kubectl:latest', command: 'cat', ttyEnabled: true)
 ],
 volumes:[
