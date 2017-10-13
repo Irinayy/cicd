@@ -73,10 +73,10 @@ volumes:[
       println "DEBUG ENABLED"
       sh "env | sort"
 
-      println "Runing kubectl/helm tests"
-      container('kubectl') {
-        pipeline.kubectlTest()
-      }
+      //println "Runing kubectl/helm tests"
+      //container('kubectl') {
+        //pipeline.kubectlTest()
+      //}
       container('helm') {
         pipeline.helmConfig()
       }
