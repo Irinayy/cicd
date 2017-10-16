@@ -77,7 +77,7 @@ volumes:[
       //container('kubectl') {
         //pipeline.kubectlTest()
       //}
-      container('helm') {
+      //container('helm') {
         pipeline.helmConfig()
       }
     }
@@ -89,15 +89,15 @@ volumes:[
     def image_tags_list = pipeline.getMapValues(image_tags_map)
 
     stage ('install dependencies and test') {
-      container('node') {
+      //container('node') {
 
         sh "yarn && yarn test"
 
-      }
+      //}
     }
 
     stage ('test deployment') {
-      container('helm') {
+      //container('helm') {
 
         // run helm chart linter
         pipeline.helmLint(chart_dir)
@@ -123,7 +123,7 @@ volumes:[
     if (env.BRANCH_NAME == 'master') {
       stage ('deploy to k8s') {
 
-        container('helm') {
+        //container('helm') {
           // Deploy using Helm chart
           pipeline.helmDeploy(
             dry_run       : false,
@@ -136,7 +136,7 @@ volumes:[
             memory        : config.app.memory,
             hostname      : config.app.hostname
           )
-        }
+        //}
 
       }
     }
